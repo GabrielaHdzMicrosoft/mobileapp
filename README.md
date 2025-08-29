@@ -1,50 +1,213 @@
-# Welcome to your Expo app 👋
+# Copilot AudioLabs - Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+React Native + Expo mobile application for Copilot AudioLabs.
 
-## Get started
+## Prerequisites
 
-1. Install dependencies
+Before you begin, make sure you have:
 
-   ```bash
-   npm install
-   ```
+- **Node.js** installed (v14 or higher) - [Download here](https://nodejs.org/)
+- **Yarn** installed - Run `npm install -g yarn`
+- **Expo Go** app on your phone - Download from [App Store](https://apps.apple.com/us/app/expo-go/id982107779) or [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
+- **Git** installed - [Download here](https://git-scm.com/)
+- **VS Code** (recommended) - [Download here](https://code.visualstudio.com/)
 
-2. Start the app
+## Getting Started
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Clone the Repository
 
 ```bash
-npm run reset-project
+git clone https://github.com/GabrielaHdzMicrosoft/mobileapp.git
+cd mobileapp
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Install Dependencies
 
-## Learn more
+```bash
+yarn install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+If you get any npm authentication errors, run:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm logout
+yarn install
+```
 
-## Join the community
+### 3. Start the Development Server
 
-Join our community of developers creating universal apps.
+```bash
+npx expo start --tunnel
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**Note:** We use `--tunnel` to ensure it works across different network configurations.
+
+### 4. Run on Your Phone
+
+1. **Wait for the QR code** to appear in your terminal
+2. **On iPhone:**
+
+   - Open your regular **Camera app** (not Expo Go)
+   - Point it at the QR code
+   - Tap the notification that appears at the top
+   - It will open in Expo Go
+
+3. **On Android:**
+   - Open **Expo Go** app
+   - Tap "Scan QR Code"
+   - Scan the QR code from your terminal
+
+### 5. You're Running! 🎉
+
+The app will load on your phone. Any changes you make to the code will automatically refresh on your device!
+
+## Development Workflow
+
+### Making Changes
+
+1. **Open the project in VS Code:**
+
+   ```bash
+   code .
+   ```
+
+2. **Edit files** - The main app entry point is:
+
+   - `app/index.tsx` - Main screen (if using single screen)
+   - `app/(tabs)/` - Tab screens (if using tab navigation)
+
+3. **Save your changes** (Ctrl+S or Cmd+S)
+
+4. **Watch your phone** - Changes appear automatically in 1-2 seconds!
+
+### Project Structure
+
+```
+mobileapp/
+├── app/                # App screens and navigation
+│   ├── (tabs)/        # Tab-based screens
+│   └── index.tsx      # Main entry point
+├── assets/            # Images, fonts, etc.
+├── components/        # Reusable React components
+├── constants/         # App constants and configuration
+├── node_modules/      # Dependencies (don't edit)
+├── package.json       # Project dependencies
+└── app.json          # Expo configuration
+```
+
+## Common Commands
+
+```bash
+# Start development server with tunnel (recommended)
+npx expo start --tunnel
+
+# Start development server (local network only)
+yarn start
+
+# Clear cache and start fresh
+npx expo start -c
+
+# Install a new package
+yarn add package-name
+
+# Check for issues
+npx expo doctor
+```
+
+## Troubleshooting
+
+### Can't connect to development server?
+
+- Make sure you're using `npx expo start --tunnel`
+- Check that your phone has internet connection
+- Try refreshing Expo Go (pull down to refresh)
+
+### Changes not showing up?
+
+- Make sure you saved the file (Ctrl+S)
+- Shake your phone and tap "Reload"
+- Restart the server: Ctrl+C then `npx expo start --tunnel`
+
+### NPM authentication errors?
+
+```bash
+npm logout
+npm config set registry https://registry.npmjs.org/
+yarn install
+```
+
+### Build errors?
+
+```bash
+# Clear everything and reinstall
+rm -rf node_modules
+yarn install
+npx expo start --tunnel -c
+```
+
+## Git Workflow for Team
+
+### Getting latest changes
+
+```bash
+git pull origin main
+yarn install  # In case new dependencies were added
+```
+
+### Making your changes
+
+```bash
+git checkout -b feature/your-feature-name
+# Make your changes
+git add .
+git commit -m "Description of your changes"
+git push origin feature/your-feature-name
+# Create Pull Request on GitHub
+```
+
+## Testing on Different Platforms
+
+- **iOS**: Use iPhone with Expo Go
+- **Android**: Use Android phone with Expo Go
+- **Web**: Press `w` in terminal (limited functionality)
+
+## Useful Resources
+
+- [Expo Documentation](https://docs.expo.dev/)
+- [React Native Documentation](https://reactnative.dev/docs/getting-started)
+- [Project Repository](https://github.com/GabrielaHdzMicrosoft/mobileapp)
+
+## Tech Stack
+
+- **React Native** - Cross-platform mobile framework
+- **Expo SDK 51** - Development platform
+- **TypeScript** - Type-safe JavaScript
+- **Expo Router** - File-based navigation
+
+## Need Help?
+
+1. Check the [Expo Discord](https://chat.expo.dev/)
+2. Check terminal for error messages
+3. Ask in the team chat
+4. Check [Stack Overflow](https://stackoverflow.com/questions/tagged/expo)
+
+## Production Deployment
+
+When ready to deploy to app stores:
+
+```bash
+# Install EAS CLI
+npm install -g eas-cli
+
+# Build for Android (Play Store)
+eas build --platform android
+
+# Build for iOS (App Store)
+eas build --platform ios
+```
+
+---
+
+**Happy Coding!** 🚀
+
+For questions about this specific project, contact: @GabrielaHdzMicrosoft
